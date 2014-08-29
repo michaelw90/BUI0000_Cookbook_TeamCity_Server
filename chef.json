@@ -6,35 +6,9 @@
     "deploy_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAp4GGUNTgz/r9ya2LlBF/7XwbKXJELqPi7YFmlU4Pcvgi4p/hQp0XqlU8EHVLetoTLK4rtjNh4vb4m3tZ5LFLfM7Pqh9YBNoTyUw/wXoZ2CaL9ydIbv9En7FZRzCLM9MiXBA9lOjEeijx1AzNt8suVZ3qJomcdV5+5iLsy2nMpMnJ1MdoFlSPE9lwNm9kndOg+y+qGjYZ0nrg6NBvZaiXtbNZQTZWkLh3ZIAFqW9gerbBR8YAGnQbWF3Jx1uDlWDX9Qph5/iH9/ZxeUwYeZidwpvfifom/TPgRDSEDR+rSXyOof2OvnZRoR2SizKNq1Di5hyqLqRH3HhNz3QDjIpZ6Q== ToMo@MININT-575DU2B"],
     "admin_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAp4GGUNTgz/r9ya2LlBF/7XwbKXJELqPi7YFmlU4Pcvgi4p/hQp0XqlU8EHVLetoTLK4rtjNh4vb4m3tZ5LFLfM7Pqh9YBNoTyUw/wXoZ2CaL9ydIbv9En7FZRzCLM9MiXBA9lOjEeijx1AzNt8suVZ3qJomcdV5+5iLsy2nMpMnJ1MdoFlSPE9lwNm9kndOg+y+qGjYZ0nrg6NBvZaiXtbNZQTZWkLh3ZIAFqW9gerbBR8YAGnQbWF3Jx1uDlWDX9Qph5/iH9/ZxeUwYeZidwpvfifom/TPgRDSEDR+rSXyOof2OvnZRoR2SizKNq1Di5hyqLqRH3HhNz3QDjIpZ6Q== ToMo@MININT-575DU2B"]
   },
-  "cookbook_moodle": {
-    "appname": "vanta_bppsites_buildempire_co_uk",
-    "hostname": "localhost",
-    "download": false,
-    "database": {
-      "root_password": "root_password",
-      "database_name": "moodle",
-      "username": "moodle",
-      "password": "password"
-    }
-  },
   "cookbook_teamcity_server": {
     "teamcity": {
-      "address": "teamcity.buildempire.co.uk",
-      "database_name": "app1_production",
-      "username": "app1",
-      "password": "app1_pass"
-    }
-  },
-  "databox": {
-    "db_root_password": "testpass",
-    "databases": {
-      "postgresql": [
-        {
-          "database_name": "app1_production",
-          "username": "app1",
-          "password": "app1_pass"
-        }
-      ]
+      "address": "localhost"
     }
   }
 }
