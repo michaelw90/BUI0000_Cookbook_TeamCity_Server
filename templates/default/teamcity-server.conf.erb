@@ -1,0 +1,43 @@
+# teamcity-server - TeamCity Server
+# THIS FILE IS MANAGED BY CHEF. ALL CHANGES WILL BE OVERWRITTEN!
+#
+
+TEAMCITY_SERVER_ENABLED=yes
+TEAMCITY_SERVER_PATH="<%= @server_path %>/var/lib/TeamCity/8.0.3"
+TEAMCITY_SERVER_MEM_OPTS="-Xms750m -Xmx750m -XX:MaxPermSize=270m"
+TEAMCITY_DATA_PATH="<%= @data_path %>/var/lib/TeamCity/BuildServer"
+TEAMCITY_SERVER_OPTS=""
+
+description "TeamCity Server"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+# TeamCity can take a while to shutdown
+kill timeout 30
+
+respawn
+
+pre-start script
+
+  [ ! -f /etc/default/TeamCity ] && { stop; exit 0; }
+
+  . /etc/default/TeamCity
+
+  [ "$TEAMCITY_SERVER_ENABLED" != "yes" ] && { stop; exit 0; }
+
+  exit 0
+end script
+
+script
+  . /etc/default/TeamCity
+
+  CATALINA_OPTS="$CATALINA_OPTS $TEAMCITY_SERVER_OPTS -server $TEAMCITY_SERVER_MEM_OPTS -Dlog4j.configuration=\"file:${TEAMCITY_SERVER_PATH}/conf/teamcity-server-log4j.xml\" -Dteamcity_logs=${TEAMCITY_SERVER_PATH}/logs -Djava.awt.headless=true"
+
+  export CATALINA_OPTS
+
+  export TEAMCITY_DATA_PATH
+
+  exec start-stop-daemon --start -c root --exec "${TEAMCITY_SERVER_PATH}/bin/catalina.sh" -- run
+
+end script
