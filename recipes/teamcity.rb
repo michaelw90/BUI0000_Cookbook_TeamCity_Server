@@ -75,7 +75,7 @@ if database['external'] && database['external'] == true && database['host'] && d
   # Setup the database properties file for TeamCity
   template database_properties_file do
     source database['properties_file']
-    action :create_if_missing
+    action :create
     variables(
       :host => database['host'],
       :port => database['port'],
@@ -87,9 +87,10 @@ if database['external'] && database['external'] == true && database['host'] && d
 
 else
 
-  # Delete the database properties file, if we're internal or all the options aren't set
-  file database_properties_file do
-    action :delete
+  # Setup the database properties file for TeamCity using the default internal database hsql
+  template database_properties_file do
+    source "database.hsqldb.properties.dist.erb"
+    action :create
   end
 
 end
