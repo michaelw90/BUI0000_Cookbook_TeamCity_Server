@@ -1,0 +1,22 @@
+# teamcity-server - TeamCity Server
+# THIS FILE IS MANAGED BY CHEF. ALL CHANGES WILL BE OVERWRITTEN!
+#
+description "TeamCity Server"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+# TeamCity can take a while to shutdown
+kill timeout 30
+
+respawn
+
+script
+
+  CATALINA_OPTS="$CATALINA_OPTS -server <%= @memory_options %> -Dlog4j.configuration=\"file:<%= @server_path %>/conf/teamcity-server-log4j.xml\" -Dteamcity_logs=<%= @server_path %>/logs -Djava.awt.headless=true"
+
+  export CATALINA_OPTS
+
+  exec start-stop-daemon --start -c root --exec "<%= @server_path %>/bin/catalina.sh" -- run
+
+end script
