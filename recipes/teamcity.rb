@@ -9,8 +9,9 @@ data_directory = node['cookbook_teamcity_server']['teamcity']['data_dir']
 teamcity_version = node['cookbook_teamcity_server']['teamcity']['version']
 jdbc_driver_download_url = node['cookbook_teamcity_server']['teamcity']['jdbc']['download_url']
 jdbc_driver_filename = node['cookbook_teamcity_server']['teamcity']['jdbc']['filename']
-address = node["cookbook_teamcity_server"]["teamcity"]["address"]
+address = node['cookbook_teamcity_server']['teamcity']['address']
 database = node['cookbook_teamcity_server']['teamcity']['database']
+extract_command = node['cookbook_teamcity_server']['teamcity']['jdbc']['extract_command']
 
 # Set the useful variables for the recipe
 server_archive_name = "TeamCity-#{teamcity_version}.tar.gz"
@@ -70,6 +71,17 @@ if database['external'] && database['external'] == true && database['host'] && d
     mode 00644
     source "#{jdbc_driver_download_url}#{jdbc_driver_filename}"
     action :create_if_missing
+    notifies :run, "bash[extract-driver]", :immediately
+  end
+
+# Run the commands to extract and move teamcity into place.
+  bash "extract-driver" do
+    code <<-EOH
+    cd #{jdbc_driver_directory}
+    #{extract_command}
+    EOH
+    action :nothing
+    only_if extract_command?
   end
 
   # Setup the database properties file for TeamCity
