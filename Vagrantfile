@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.omnibus.chef_version = '11.8.0'
   config.vm.box = "chef/ubuntu-14.04"
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", 2048]
+    vb.customize ["modifyvm", :id, "--memory", 1024]
   end
   config.ssh.forward_agent = true
   config.vm.network :forwarded_port, :guest => 80, :host => 80, :auto_correct => true
