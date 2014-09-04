@@ -81,7 +81,7 @@ if database['external'] && database['external'] == true && database['host'] && d
     #{extract_command}
     EOH
     action :nothing
-    only_if extract_command
+    only_if { extract_command }
   end
 
   # Setup the database properties file for TeamCity
