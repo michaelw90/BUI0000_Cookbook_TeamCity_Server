@@ -28,7 +28,7 @@ database_properties_file = "#{data_config_directory}/database.properties"
 # Download the version of teamcity, if we don't already have it
 remote_file server_archive_path do
   backup false
-  source "http://download.jetbrains.com/teamcity/#{server_archive_name}"
+  source "https://download.jetbrains.com/teamcity/#{server_archive_name}"
   action :create_if_missing
   notifies :run, "bash[install-teamcity]", :immediately
 end

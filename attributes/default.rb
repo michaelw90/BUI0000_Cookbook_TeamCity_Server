@@ -1,4 +1,4 @@
-default['cookbook_teamcity_server']['teamcity']['version'] = '8.1.4'
+default['cookbook_teamcity_server']['teamcity']['version'] = '9.1.4'
 default['cookbook_teamcity_server']['teamcity']['address'] = 'localhost'
 default['cookbook_teamcity_server']['teamcity']['data_dir'] = '/root/.BuildServer'
 default['cookbook_teamcity_server']['teamcity']['jdbc']['download_url'] = "http://ftp.kaist.ac.kr/mysql/Downloads/Connector-J/"
