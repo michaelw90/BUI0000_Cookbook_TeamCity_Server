@@ -24,3 +24,11 @@ cookbook_file "#{data_plugins_directory}/azure-cloud.zip" do
   source "azure-cloud.zip"
   action :create_if_missing
 end
+
+# Install the JetBrains Hub plugin.
+# This enables authentication with the Jetbrains Hub.
+cookbook_file "#{data_plugins_directory}/hub-plugin.zip" do
+  backup false
+  source "hub-plugin.zip"
+  action :create_if_missing
+end
