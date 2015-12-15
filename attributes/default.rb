@@ -1,3 +1,7 @@
+default['java']['install_flavor'] = 'oracle'
+default['java']['jdk_version'] = '8'
+default['java']['oracle']['accept_oracle_download_terms'] = true
+
 default['cookbook_teamcity_server']['teamcity']['version'] = '9.1.4'
 default['cookbook_teamcity_server']['teamcity']['address'] = 'localhost'
 default['cookbook_teamcity_server']['teamcity']['data_dir'] = '/root/.BuildServer'
