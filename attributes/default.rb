@@ -2,7 +2,7 @@ default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'
 default['java']['oracle']['accept_oracle_download_terms'] = true
 
-default['cookbook_teamcity_server']['teamcity']['version'] = '10.0'
+default['cookbook_teamcity_server']['teamcity']['version'] = '2017.2.1'
 default['cookbook_teamcity_server']['teamcity']['address'] = 'localhost'
 default['cookbook_teamcity_server']['teamcity']['data_dir'] = '/root/.BuildServer'
 default['cookbook_teamcity_server']['teamcity']['jdbc']['download_url'] = "http://ftp.kaist.ac.kr/mysql/Downloads/Connector-J/"
