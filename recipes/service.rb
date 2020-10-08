@@ -10,7 +10,7 @@ memory_options = node['cookbook_teamcity_server']['teamcity']['memory_options']
 
 # Set the useful variables for the recipe
 server_directory = "/opt/teamcity/#{teamcity_version}/TeamCity"
-shell_script_path = "#{server_directory}/bin/teamcity.sh"
+shell_script_path = "#{server_directory}/bin/teamcity-server.sh"
 
 
 systemd_unit "teamcity.service" do
