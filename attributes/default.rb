@@ -16,5 +16,3 @@ default['cookbook_teamcity_server']['teamcity']['database']['name'] = nil
 default['cookbook_teamcity_server']['teamcity']['database']['port'] = nil
 default['cookbook_teamcity_server']['teamcity']['database']['username'] = nil
 default['cookbook_teamcity_server']['teamcity']['database']['password'] = nil
-
-default['cookbook_youtrack']['systemd'] = true;
