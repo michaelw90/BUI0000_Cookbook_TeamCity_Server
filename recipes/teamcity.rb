@@ -59,20 +59,6 @@ end
 # If we are using an external database and all properties are set
 if database['external'] && database['external'] == true && database['host'] && database['port'] && database['name'] && database['username'] && database['password']
 
-  # Create the jdbc driver directory
-  directory jdbc_driver_directory do
-    recursive true
-    action :create
-  end
-
-  # Download the jdbc driver of choice
-  remote_file "#{jdbc_driver_directory}/#{jdbc_driver_filename}" do
-    backup false
-    mode 00644
-    source "#{jdbc_driver_download_url}#{jdbc_driver_filename}"
-    action :create_if_missing
-    notifies :run, "bash[extract-driver]", :immediately
-  end
 
 # Run the commands to extract and move teamcity into place.
   bash "extract-driver" do
